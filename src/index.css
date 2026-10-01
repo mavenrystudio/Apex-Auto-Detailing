@@ -1,0 +1,39 @@
+@import "tailwindcss";
+@theme {
+  --color-ink: #020202;
+  --color-graphite: #121214;
+  --color-steel: #232327;
+  --color-red: #d4202c;
+  --color-red-hi: #ff3b47;
+  --font-display: "Big Shoulders Display", Impact, sans-serif;
+  --font-sans: "Manrope", system-ui, sans-serif;
+}
+html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+body { background: var(--color-ink); color: #fff; font-family: var(--font-sans); }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+:focus-visible { outline: 2px solid var(--color-red-hi); outline-offset: 3px; }
+.h-display { font-family: var(--font-display); font-weight: 800; line-height: .92; letter-spacing: -.01em; text-transform: uppercase; }
+.btn { display: inline-flex; align-items: center; gap: .5rem; padding: .9rem 1.6rem; font-weight: 700; background: linear-gradient(135deg, var(--color-red-hi), var(--color-red) 55%, #8f0f19); transition: transform .25s, box-shadow .25s; }
+.btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px -8px rgba(212,32,44,.7); }
+.btn-ghost { background: transparent; border: 1px solid #ffffff40; }
+.btn-ghost:hover { border-color: var(--color-red-hi); box-shadow: none; }
+.field { width: 100%; background: var(--color-graphite); border: 1px solid var(--color-steel); padding: .8rem 1rem; color: #fff; }
+.field:focus { border-color: var(--color-red-hi); outline: none; }
+.kenburns { animation: kb 22s ease-in-out infinite alternate; }
+@keyframes kb { to { transform: scale(1.12) translate3d(-1.5%, -1%, 0); } }
+.btn { position: relative; overflow: hidden; }
+.btn::after, .shine::after { content: ""; position: absolute; inset: 0; pointer-events: none; transform: translateX(-130%); transition: transform .8s; background: linear-gradient(110deg, transparent 38%, #ffffff40 50%, transparent 62%); }
+.btn:hover::after, .shine:hover::after { transform: translateX(130%); }
+.btn-ghost::after { display: none; }
+.marquee { display: flex; width: max-content; animation: mq 32s linear infinite; }
+.marquee:hover { animation-play-state: paused; }
+@keyframes mq { to { transform: translateX(-50%); } }
+.tilt::before { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: 0; transition: opacity .3s; background: radial-gradient(380px circle at var(--mx, 50%) var(--my, 50%), #ff3b4735, transparent 60%); }
+.tilt:hover::before { opacity: 1; }
+.hot { border: 1px solid transparent; background: linear-gradient(#1a1012, #1a1012) padding-box, linear-gradient(135deg, #ff3b47, #2a0a0d 45%, #ff3b47) border-box; box-shadow: 0 0 40px -14px rgba(255, 59, 71, .55); transition: box-shadow .4s; }
+.hot:hover { box-shadow: 0 0 56px -10px rgba(255, 59, 71, .75); };
+.cue { animation: cue 1.8s ease-in-out infinite; }
+@keyframes cue { 50% { transform: translateY(10px); opacity: .3; } }
+.glow-pulse { animation: gp 2.4s ease-in-out infinite; }
+@keyframes gp { 50% { box-shadow: 0 0 36px 2px rgba(255, 59, 71, .75); } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; } }
